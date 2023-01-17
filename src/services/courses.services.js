@@ -15,12 +15,14 @@ class CoursesServices{
     static async CoursesWithInfo(){
        try{
         const result =await Courses.findAll({
-          include:{
+          include:[
+          {
            model:Videos,
-           as:"video",
+           as:"video"},
+           {
            model:Categories,
            as:"category"
-          },
+          }],
         }); 
         return result;
        }catch(error){
